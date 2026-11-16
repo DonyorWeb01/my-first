@@ -1,0 +1,1115 @@
+<!DOCTYPE html>
+<html lang="uz" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMW | Tezlik va Qulaylik Zavqi</title>
+    
+    <!-- Google Fonts: Outfit -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                    },
+                    colors: {
+                        bmw: {
+                            black: '#050505',
+                            dark: '#0c0c0e',
+                            card: '#121215',
+                            border: '#232329',
+                            silver: '#c0c0c0',
+                            platinum: '#e5e7eb',
+                            muted: '#8e9299',
+                        }
+                    },
+                    backgroundImage: {
+                        'silver-gradient': 'linear-gradient(135deg, #ffffff 0%, #c0c0c0 50%, #7a7d85 100%)',
+                        'dark-metal': 'linear-gradient(145deg, rgba(25,25,30,0.9) 0%, rgba(10,10,12,0.95) 100%)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Asosiy stil va maxsus effektlar */
+        body {
+            background-color: #050505;
+            color: #ffffff;
+            font-family: 'Outfit', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* Kumush matn gradienti */
+        .text-silver-metallic {
+            background: linear-gradient(135deg, #ffffff 10%, #d1d5db 45%, #8e9299 80%, #ffffff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 200% auto;
+            animation: shineText 6s linear infinite;
+        }
+
+        @keyframes shineText {
+            to {
+                background-position: 200% center;
+            }
+        }
+
+        /* Glassmorphism Navbar */
+        .glass-nav {
+            background: rgba(5, 5, 5, 0.78);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(192, 192, 192, 0.12);
+        }
+
+        /* Rasm joylashtirish uchun maxsus ramka dizayni */
+        .image-slot {
+            position: relative;
+            background: repeating-linear-gradient(
+                -45deg,
+                rgba(255, 255, 255, 0.02),
+                rgba(255, 255, 255, 0.02) 10px,
+                rgba(192, 192, 192, 0.04) 10px,
+                rgba(192, 192, 192, 0.04) 20px
+            );
+            border: 1px dashed rgba(192, 192, 192, 0.3);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            overflow: hidden;
+        }
+
+        .image-slot:hover {
+            border-color: rgba(255, 255, 255, 0.75);
+            background-color: rgba(255, 255, 255, 0.04);
+        }
+
+        /* Kartochka hover effekti */
+        .bmw-card {
+            background: linear-gradient(160deg, rgba(22, 22, 26, 0.95) 0%, rgba(10, 10, 12, 0.98) 100%);
+            border: 1px solid rgba(192, 192, 192, 0.14);
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease, border-color 0.4s ease;
+        }
+
+        .bmw-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(229, 231, 235, 0.45);
+            box-shadow: 0 20px 40px -15px rgba(192, 192, 192, 0.12);
+        }
+
+        /* Tugma effektlari */
+        .btn-silver {
+            background: linear-gradient(135deg, #ffffff 0%, #c0c0c0 100%);
+            color: #050505;
+            transition: all 0.3s ease;
+        }
+
+        .btn-silver:hover {
+            background: linear-gradient(135deg, #ffffff 0%, #e5e7eb 100%);
+            box-shadow: 0 0 25px rgba(255, 255, 255, 0.35);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline-silver {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(192, 192, 192, 0.35);
+            color: #ffffff;
+            transition: all 0.3s ease;
+        }
+
+        .btn-outline-silver:hover {
+            background: rgba(255, 255, 255, 0.12);
+            border-color: #ffffff;
+            box-shadow: 0 0 20px rgba(192, 192, 192, 0.2);
+        }
+
+        /* Scroll-reveal (AOS uslubidagi) animatsiyalar */
+        .reveal {
+            opacity: 0;
+            transform: translateY(32px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Carousel scrollbar yashirish */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        /* 3D Modal Grid foni */
+        .grid-3d-floor {
+            background-size: 40px 40px;
+            background-image: 
+                linear-gradient(to right, rgba(192, 192, 192, 0.12) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(192, 192, 192, 0.12) 1px, transparent 1px);
+            transform: perspective(500px) rotateX(60deg);
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-white selection:text-black">
+
+    <!-- ==================== HEADER / NAVIGATSIYA ==================== -->
+    <header id="navbar" class="fixed top-0 left-0 right-0 z-50 glass-nav transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                
+                <!-- BMW Logotipi (Kumush va Oq-Qora minimalistik uslubda) -->
+                <a href="#bosh-sahifa" class="flex items-center gap-3.5 group">
+                    <div class="relative w-11 h-11 rounded-full border-2 border-bmw-silver flex items-center justify-center bg-black shadow-[0_0_15px_rgba(192,192,192,0.25)] group-hover:scale-105 transition-transform">
+                        <!-- Klassik BMW sektorlari -->
+                        <svg viewBox="0 0 100 100" class="w-9 h-9">
+                            <circle cx="50" cy="50" r="46" fill="#050505" stroke="#c0c0c0" stroke-width="3"/>
+                            <path d="M50,50 L50,14 A36,36 0 0,1 86,50 Z" fill="#ffffff"/>
+                            <path d="M50,50 L14,50 A36,36 0 0,1 50,14 Z" fill="#2b2d33"/>
+                            <path d="M50,50 L50,86 A36,36 0 0,1 14,50 Z" fill="#ffffff"/>
+                            <path d="M50,50 L86,50 A36,36 0 0,1 50,86 Z" fill="#2b2d33"/>
+                            <circle cx="50" cy="50" r="36" fill="none" stroke="#c0c0c0" stroke-width="2.5"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <span class="text-xl font-bold tracking-[0.2em] text-white block leading-none">BMW</span>
+                        <span class="text-[10px] uppercase tracking-[0.28em] text-bmw-silver">Sheer Driving Pleasure</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Navigatsiya (5 ta bo'lim) -->
+                <nav class="hidden lg:flex items-center space-x-8">
+                    <a href="#bosh-sahifa" class="nav-link text-sm font-medium text-white hover:text-bmw-silver transition-colors tracking-wide">Bosh sahifa</a>
+                    <a href="#yangi-modellar" class="nav-link text-sm font-medium text-bmw-muted hover:text-white transition-colors tracking-wide">Yangi Modellar</a>
+                    <a href="#barcha-modellar" class="nav-link text-sm font-medium text-bmw-muted hover:text-white transition-colors tracking-wide">Barcha Modellar</a>
+                    <a href="#bmw-tarixi" class="nav-link text-sm font-medium text-bmw-muted hover:text-white transition-colors tracking-wide">BMW Tarixi</a>
+                    <a href="#aloqa" class="nav-link text-sm font-medium text-bmw-muted hover:text-white transition-colors tracking-wide">Aloqa</a>
+                </nav>
+
+                <!-- O'ng tarafdagi harakat tugmasi va Mobil menyu tugmasi -->
+                <div class="flex items-center gap-4">
+                    <a href="#aloqa" class="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-full btn-silver text-xs font-semibold uppercase tracking-wider">
+                        <span>Ro'yxatdan o'tish</span>
+                        <i class="fa-solid fa-arrow-right text-[11px]"></i>
+                    </a>
+                    
+                    <button id="mobile-menu-btn" aria-label="Menyuni ochish" class="lg:hidden p-2.5 rounded-xl border border-bmw-border text-bmw-silver hover:text-white hover:border-white transition-colors">
+                        <i class="fa-solid fa-bars text-lg"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobil Navigatsiya Menyusi -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-bmw-dark/95 backdrop-blur-xl border-b border-bmw-border px-6 py-5 space-y-3">
+            <a href="#bosh-sahifa" class="mobile-nav-link block py-2.5 text-base font-medium text-white border-b border-white/5">1. Bosh sahifa</a>
+            <a href="#yangi-modellar" class="mobile-nav-link block py-2.5 text-base font-medium text-bmw-silver border-b border-white/5">2. Yangi Modellar (2020–2026)</a>
+            <a href="#barcha-modellar" class="mobile-nav-link block py-2.5 text-base font-medium text-bmw-silver border-b border-white/5">3. Barcha Modellar</a>
+            <a href="#bmw-tarixi" class="mobile-nav-link block py-2.5 text-base font-medium text-bmw-silver border-b border-white/5">4. BMW Tarixi va Sayt haqida</a>
+            <a href="#aloqa" class="mobile-nav-link block py-2.5 text-base font-medium text-bmw-silver">5. Aloqa va So'rov yuborish</a>
+        </div>
+    </header>
+
+
+    <!-- ==================== 1-BO'LIM: BOSH SAHIFA (HERO) ==================== -->
+    <section id="bosh-sahifa" class="relative min-h-screen flex items-center pt-20 overflow-hidden">
+        
+        <!-- ORQA FON UCHUN MAXSUS RASM JOYI (Foydalanuvchi o'zi rasm qo'yishi uchun bo'sh qoldirilgan) -->
+        <!-- ESLATMA: O'zingizning mashhur BMW rasmingizni quyidagi <img> tegi ichidagi src="" atributiga joylashtiring -->
+        <div class="absolute inset-0 z-0">
+            <img 
+                src="" 
+                alt="Eng mashhur BMW modeli orqa fon rasmi" 
+                class="w-full h-full object-cover opacity-0 transition-opacity duration-700"
+                onload="this.classList.remove('opacity-0'); document.getElementById('hero-placeholder-guide').classList.add('hidden');"
+                onerror="this.classList.add('opacity-0')"
+            >
+            
+            <!-- Rasm qo'yilmaganda ko'rinib turadigan zamonaviy kumush-qora studiya foni va yo'riqnoma -->
+            <div id="hero-placeholder-guide" class="w-full h-full bg-[radial-gradient(ellipse_at_top_right,_rgba(192,192,192,0.16)_0%,_rgba(12,12,14,0.95)_55%,_#050505_100%)] flex items-center justify-end pr-6 md:pr-16">
+                <div class="hidden lg:flex flex-col items-center justify-center w-[46%] h-[62%] rounded-3xl image-slot p-8 text-center">
+                    <div class="w-16 h-16 rounded-2xl bg-white/5 border border-bmw-silver/30 flex items-center justify-center mb-4">
+                        <i class="fa-regular fa-image text-2xl text-bmw-silver"></i>
+                    </div>
+                    <span class="text-xs uppercase tracking-[0.25em] text-bmw-silver font-semibold mb-2">Orqa Fon Uchun Rasm Maydoni</span>
+                    <p class="text-sm text-bmw-muted max-w-xs">
+                        Eng mashhur BMW modeli (masalan: <span class="text-white">BMW M4 CSL</span> yoki <span class="text-white">BMW M5 CS</span>) rasmini shu yerga joylashtiring
+                    </p>
+                    <code class="mt-4 text-[11px] text-bmw-silver/70 bg-black/60 px-3 py-1.5 rounded-lg border border-white/10">
+                        &lt;img src="bmw-hero.jpg"&gt;
+                    </code>
+                </div>
+            </div>
+
+            <!-- Qoraytirilgan Gradient Qatlam (Matnlar aniq o'qilishi uchun) -->
+            <div class="absolute inset-0 bg-gradient-to-r from-[#050505] via-[#050505]/85 to-transparent pointer-events-none"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-[#050505]/60 pointer-events-none"></div>
+        </div>
+
+        <!-- Hero Kontent -->
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-16">
+            <div class="max-w-2xl">
+                <!-- Yuqori Nishon -->
+                <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white/5 border border-bmw-silver/25 backdrop-blur-md mb-6 reveal active">
+                    <span class="w-2 h-2 rounded-full bg-white animate-pulse"></span>
+                    <span class="text-xs font-medium uppercase tracking-[0.22em] text-bmw-platinum">Bayerische Motoren Werke • Premium Tajriba</span>
+                </div>
+
+                <!-- Asosiy Sarlavha -->
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.12] mb-6 reveal active">
+                    <span class="text-silver-metallic">Tezlik va Qulaylik zavqini</span>
+                    <span class="block text-white mt-2">BMW bilan qayta kashf eting</span>
+                </h1>
+
+                <!-- Qo'shimcha ilhomlantiruvchi matn -->
+                <p class="text-base sm:text-lg text-bmw-silver/90 font-light leading-relaxed mb-9 max-w-xl reveal active">
+                    Nemis muhandisligining mukammalligi, ilg'or aerodinamika va kelajak texnologiyalari bir nuqtada jamlangan. Har bir burilishda mutlaq nazorat va haqiqiy haydash zavqini his eting.
+                </p>
+
+                <!-- Harakat Tugmalari -->
+                <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 reveal active">
+                    <a href="#yangi-modellar" class="px-8 py-4 rounded-2xl btn-silver font-semibold text-sm uppercase tracking-wider flex items-center justify-center gap-3">
+                        <span>Yangi modellarni ko'rish</span>
+                        <i class="fa-solid fa-chevron-right text-xs"></i>
+                    </a>
+                    <a href="#barcha-modellar" class="px-8 py-4 rounded-2xl btn-outline-silver font-medium text-sm uppercase tracking-wider flex items-center justify-center gap-3">
+                        <i class="fa-solid fa-clock-rotate-left text-bmw-silver"></i>
+                        <span>Afsonaviy tarix</span>
+                    </a>
+                </div>
+
+                <!-- Qisqa Ko'rsatkichlar -->
+                <div class="grid grid-cols-3 gap-6 pt-12 mt-12 border-t border-white/10 max-w-lg reveal active">
+                    <div>
+                        <p class="text-2xl sm:text-3xl font-bold text-white">1916</p>
+                        <p class="text-xs text-bmw-muted uppercase tracking-wider mt-1">Tashkil topgan yil</p>
+                    </div>
+                    <div>
+                        <p class="text-2xl sm:text-3xl font-bold text-silver-metallic">3D</p>
+                        <p class="text-xs text-bmw-muted uppercase tracking-wider mt-1">Interaktiv Ko'rik</p>
+                    </div>
+                    <div>
+                        <p class="text-2xl sm:text-3xl font-bold text-white">M-Power</p>
+                        <p class="text-xs text-bmw-muted uppercase tracking-wider mt-1">Sport DNK</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ==================== 2-BO'LIM: YANGI MODELLAR (2020–2026) ==================== -->
+    <section id="yangi-modellar" class="py-24 relative bg-bmw-dark border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <!-- Bo'lim Sarlavhasi -->
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6 reveal">
+                <div>
+                    <span class="text-xs font-semibold uppercase tracking-[0.25em] text-bmw-silver block mb-3">02 • Zamonaviy Avlod</span>
+                    <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight">
+                        Yangi Modellar <span class="text-silver-metallic">(2020–2026)</span>
+                    </h2>
+                </div>
+                <p class="text-sm sm:text-base text-bmw-muted max-w-md font-light">
+                    2020-yildan 2026-yilgacha ishlab chiqarilgan eng mashhur va innovatsion BMW modellari. Har bir modelni tashqi va salon 3D ko'rinishida kashf eting.
+                </p>
+            </div>
+
+            <!-- Modellar Gridi (JavaScript orqali generatsiya qilinadi) -->
+            <div id="new-models-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Kartochkalar JS orqali shu yerga yuklanadi -->
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ==================== 3-BO'LIM: BARCHA MODELLAR (TARIXDAN HOZIRGACHA) ==================== -->
+    <section id="barcha-modellar" class="py-24 relative bg-bmw-black border-t border-white/5 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <!-- Sarlavha va Carousel Boshqaruvi -->
+            <div class="flex flex-col lg:flex-row lg:items-end justify-between mb-12 gap-6 reveal">
+                <div>
+                    <span class="text-xs font-semibold uppercase tracking-[0.25em] text-bmw-silver block mb-3">03 • Meros va Evolyutsiya</span>
+                    <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight">
+                        Barcha Modellar <span class="text-silver-metallic">(1936–2026)</span>
+                    </h2>
+                    <p class="text-sm sm:text-base text-bmw-muted mt-3 max-w-xl font-light">
+                        BMW tomonidan yaratilgan ilk klassik afsonalardan tortib, zamonaviy davrning eng sara avtomobillarigacha bo'lgan shonli yo'l.
+                    </p>
+                </div>
+
+                <!-- Filtr va Carousel Tugmalari -->
+                <div class="flex flex-wrap items-center gap-3">
+                    <div class="flex bg-bmw-card p-1.5 rounded-2xl border border-bmw-border">
+                        <button onclick="filterArchive('all')" class="archive-filter-btn active px-4 py-2 rounded-xl text-xs font-semibold bg-white text-black transition-all" data-filter="all">Barchasi</button>
+                        <button onclick="filterArchive('classic')" class="archive-filter-btn px-4 py-2 rounded-xl text-xs font-medium text-bmw-silver hover:text-white transition-all" data-filter="classic">1936–1989</button>
+                        <button onclick="filterArchive('modern-classic')" class="archive-filter-btn px-4 py-2 rounded-xl text-xs font-medium text-bmw-silver hover:text-white transition-all" data-filter="modern-classic">1990–2019</button>
+                        <button onclick="filterArchive('contemporary')" class="archive-filter-btn px-4 py-2 rounded-xl text-xs font-medium text-bmw-silver hover:text-white transition-all" data-filter="contemporary">2020–2026</button>
+                    </div>
+
+                    <!-- Carousel Chap/O'ng Tugmalari -->
+                    <div class="flex items-center gap-2 ml-auto sm:ml-2">
+                        <button id="carousel-prev" aria-label="Oldingi model" class="w-11 h-11 rounded-full border border-bmw-border bg-bmw-card text-white hover:bg-white hover:text-black transition-all flex items-center justify-center">
+                            <i class="fa-solid fa-arrow-left text-sm"></i>
+                        </button>
+                        <button id="carousel-next" aria-label="Keyingi model" class="w-11 h-11 rounded-full border border-bmw-border bg-bmw-card text-white hover:bg-white hover:text-black transition-all flex items-center justify-center">
+                            <i class="fa-solid fa-arrow-right text-sm"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Gorizontal Carousel Konteyneri -->
+            <div id="archive-carousel" class="flex gap-6 overflow-x-auto no-scrollbar scroll-smooth pb-6 snap-x snap-mandatory reveal">
+                <!-- Tarixiy modellar kartochkalari JS orqali yuklanadi -->
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ==================== 4-BO'LIM: BMW TARIXI VA SAYT HAQIDA ==================== -->
+    <section id="bmw-tarixi" class="py-24 relative bg-bmw-dark border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <!-- Yuqori Sarlavha -->
+            <div class="text-center max-w-3xl mx-auto mb-16 reveal">
+                <span class="text-xs font-semibold uppercase tracking-[0.25em] text-bmw-silver block mb-3">04 • Kompaniya va Platforma</span>
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight mb-5">
+                    BMW Tarixi va <span class="text-silver-metallic">Sayt Maqsadi</span>
+                </h2>
+                <p class="text-bmw-muted text-base font-light leading-relaxed">
+                    Aviatsiya dvigatellaridan jahon avtomobilsozligi cho'qqisigacha bo'lgan bir asrdan ortiq shonli tarix hamda ushbu raqamli ko'rgazmaning asosiy vazifasi.
+                </p>
+            </div>
+
+            <!-- 2 Ustunli Asosiy Ma'lumot Bloki -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-stretch">
+                
+                <!-- Chap ustun: BMW Kompaniyasi haqida to'liq ma'lumot (7 ustun) -->
+                <div class="lg:col-span-7 bmw-card rounded-3xl p-8 sm:p-10 flex flex-col justify-between reveal">
+                    <div>
+                        <div class="flex items-center gap-3 mb-6">
+                            <div class="w-12 h-12 rounded-2xl bg-white/5 border border-bmw-silver/30 flex items-center justify-center text-white">
+                                <i class="fa-solid fa-landmark text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-2xl font-bold text-white">BMW Kompaniyasi Tarixi</h3>
+                                <p class="text-xs text-bmw-silver uppercase tracking-widest">Bayerische Motoren Werke AG</p>
+                            </div>
+                        </div>
+
+                        <div class="space-y-4 text-bmw-silver/90 text-sm sm:text-base font-light leading-relaxed">
+                            <p>
+                                <strong class="text-white font-semibold">1916-yil 7-martda</strong> Germaniyaning Myunxen shahrida tashkil etilgan BMW dastlab samolyot dvigatellari ishlab chiqarish bilan shug'ullangan. Kompaniyaning afsonaviy dumaloq belgisi Bavariya bayrog'i ranglari va aylanayotgan samolyot parragi ramzini o'zida mujassam etgan.
+                            </p>
+                            <p>
+                                1923-yilda ilk <span class="text-white font-medium">BMW R32</span> mototsikli, 1928-yilda esa ilk avtomobil ishlab chiqarilishi bilan kompaniya muhandislik inqilobini boshladi. 1972-yilda tashkil etilgan <span class="text-white font-medium">BMW M (Motorsport)</span> bo'limi esa poyga treklaridagi g'alabalarni kundalik yo'llarga olib chiqdi.
+                            </p>
+                            <p>
+                                Bugungi kunda BMW Group (BMW, MINI va Rolls-Royce brendlari bilan) elektromobillar (<span class="text-white font-medium">BMW i</span>), sun'iy intellektga asoslangan boshqaruv tizimlari va <span class="text-white font-medium">Neue Klasse</span> kelajak arxitekturasi orqali dunyo avtomobil sanoatiga yetakchilik qilmoqda.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Tarixiy bosqichlar mini-xronologiyasi -->
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-8 mt-8 border-t border-white/10">
+                        <div class="p-3.5 rounded-2xl bg-black/50 border border-white/5">
+                            <span class="text-lg font-bold text-white block">1916</span>
+                            <span class="text-xs text-bmw-muted">Myunxenda asos solindi</span>
+                        </div>
+                        <div class="p-3.5 rounded-2xl bg-black/50 border border-white/5">
+                            <span class="text-lg font-bold text-white block">1972</span>
+                            <span class="text-xs text-bmw-muted">BMW M Motorsport</span>
+                        </div>
+                        <div class="p-3.5 rounded-2xl bg-black/50 border border-white/5">
+                            <span class="text-lg font-bold text-white block">2013</span>
+                            <span class="text-xs text-bmw-muted">BMW i Elektr davri</span>
+                        </div>
+                        <div class="p-3.5 rounded-2xl bg-black/50 border border-white/5">
+                            <span class="text-lg font-bold text-silver-metallic block">2026</span>
+                            <span class="text-xs text-bmw-muted">Neue Klasse kelajagi</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- O'ng ustun: Sayt Maqsadi va Muzey/Bosh qarorgoh rasm joyi (5 ustun) -->
+                <div class="lg:col-span-5 flex flex-col gap-6 reveal">
+                    
+                    <!-- Sayt Maqsadi Kartochkasi -->
+                    <div class="bmw-card rounded-3xl p-8 flex-1">
+                        <div class="flex items-center gap-3 mb-5">
+                            <div class="w-11 h-11 rounded-2xl bg-white text-black flex items-center justify-center">
+                                <i class="fa-solid fa-bullseye text-lg"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-white">Ushbu Sayt Maqsadi</h3>
+                        </div>
+                        <p class="text-sm text-bmw-silver/90 font-light leading-relaxed mb-5">
+                            Ushbu platforma O'zbekistondagi va butun dunyodagi BMW ixlosmandlari uchun yagona raqamli ko'rgazma maydoni sifatida yaratilgan. Bizning asosiy maqsadimiz:
+                        </p>
+                        <ul class="space-y-3 text-sm text-bmw-platinum">
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-check text-white mt-1 text-xs"></i>
+                                <span>2020–2026-yillardagi eng yangi modellarni texnik tahlil va <strong>3D tashqi/salon ko'rinishida</strong> taqdim etish;</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-check text-white mt-1 text-xs"></i>
+                                <span>Klassik va zamonaviy BMW avlodlari o'rtasidagi muhandislik bog'liqligini ko'rsatish;</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-check text-white mt-1 text-xs"></i>
+                                <span>Mijozlarga qulay ro'yxatdan o'tish va maslahat olish imkoniyatini yaratish.</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- BMW Muzeyi / Bosh qarorgohi uchun bo'sh rasm ramkasi -->
+                    <div class="h-52 rounded-3xl image-slot p-6 flex flex-col items-center justify-center text-center relative">
+                        <img 
+                            src="" 
+                            alt="BMW Myunxen Bosh Qarorgohi va Muzeyi" 
+                            class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-500"
+                            onload="this.classList.remove('opacity-0'); this.nextElementSibling.classList.add('hidden');"
+                        >
+                        <div>
+                            <i class="fa-regular fa-building text-2xl text-bmw-silver mb-2"></i>
+                            <p class="text-xs font-semibold uppercase tracking-widest text-white">Rasm Joylashtirish Maydoni</p>
+                            <p class="text-xs text-bmw-muted mt-1">BMW Bosh qarorgohi (Myunxen) yoki Muzey rasmi</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ==================== 5-BO'LIM: ALOQA VA RO'YXATDAN O'TISH ==================== -->
+    <section id="aloqa" class="py-24 relative bg-bmw-black border-t border-white/5">
+        <!-- Fon yorug'lik effekti -->
+        <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-white/[0.03] blur-[120px] rounded-full pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+                
+                <!-- Chap tomon: Aloqa ma'lumotlari -->
+                <div class="lg:col-span-5 space-y-8 reveal">
+                    <div>
+                        <span class="text-xs font-semibold uppercase tracking-[0.25em] text-bmw-silver block mb-3">05 • Bog'lanish</span>
+                        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight mb-4">
+                            Ro'yxatdan o'ting va <span class="text-silver-metallic">So'rov yuboring</span>
+                        </h2>
+                        <p class="text-bmw-muted text-sm sm:text-base font-light leading-relaxed">
+                            O'zingizga yoqqan BMW modelini tanlang, 3D ko'rik bo'yicha savollar bering yoki shaxsiy maslahat uchun ro'yxatdan o'ting. Mutaxassislarimiz siz bilan tez orada bog'lanishadi.
+                        </p>
+                    </div>
+
+                    <div class="space-y-4">
+                        <div class="flex items-center gap-4 p-4 rounded-2xl bg-bmw-card border border-bmw-border">
+                            <div class="w-11 h-11 rounded-xl bg-white/5 flex items-center justify-center text-white">
+                                <i class="fa-solid fa-location-dot"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs text-bmw-muted uppercase tracking-wider">Manzil</p>
+                                <p class="text-sm font-medium text-white">Toshkent shahri, Amir Temur shoh ko'chasi</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center gap-4 p-4 rounded-2xl bg-bmw-card border border-bmw-border">
+                            <div class="w-11 h-11 rounded-xl bg-white/5 flex items-center justify-center text-white">
+                                <i class="fa-solid fa-phone"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs text-bmw-muted uppercase tracking-wider">Ishonch telefoni</p>
+                                <p class="text-sm font-medium text-white">+998 (71) 200-00-00</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center gap-4 p-4 rounded-2xl bg-bmw-card border border-bmw-border">
+                            <div class="w-11 h-11 rounded-xl bg-white/5 flex items-center justify-center text-white">
+                                <i class="fa-solid fa-envelope"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs text-bmw-muted uppercase tracking-wider">Elektron pochta</p>
+                                <p class="text-sm font-medium text-white">info@bmw-club.uz</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- O'ng tomon: Ro'yxatdan o'tish formasi -->
+                <div class="lg:col-span-7 reveal">
+                    <div class="bmw-card rounded-3xl p-8 sm:p-10 shadow-2xl">
+                        
+                        <form id="contact-form" class="space-y-6">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                                <!-- Ism va Familiya -->
+                                <div>
+                                    <label for="fullName" class="block text-xs font-medium uppercase tracking-wider text-bmw-silver mb-2">Ism va Familiya *</label>
+                                    <input type="text" id="fullName" required placeholder="Masalan: Sardor Karimov" 
+                                        class="w-full px-4 py-3.5 rounded-xl bg-black/70 border border-bmw-border text-white placeholder-bmw-muted/60 text-sm focus:outline-none focus:border-white transition-colors">
+                                </div>
+
+                                <!-- Telefon raqam -->
+                                <div>
+                                    <label for="phone" class="block text-xs font-medium uppercase tracking-wider text-bmw-silver mb-2">Telefon raqam *</label>
+                                    <input type="tel" id="phone" required placeholder="+998 90 123 45 67" 
+                                        class="w-full px-4 py-3.5 rounded-xl bg-black/70 border border-bmw-border text-white placeholder-bmw-muted/60 text-sm focus:outline-none focus:border-white transition-colors">
+                                </div>
+                            </div>
+
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                                <!-- Email -->
+                                <div>
+                                    <label for="email" class="block text-xs font-medium uppercase tracking-wider text-bmw-silver mb-2">Elektron pochta</label>
+                                    <input type="email" id="email" placeholder="sizning@email.uz" 
+                                        class="w-full px-4 py-3.5 rounded-xl bg-black/70 border border-bmw-border text-white placeholder-bmw-muted/60 text-sm focus:outline-none focus:border-white transition-colors">
+                                </div>
+
+                                <!-- Modelni tanlash -->
+                                <div>
+                                    <label for="selectedModel" class="block text-xs font-medium uppercase tracking-wider text-bmw-silver mb-2">Qiziqtirgan BMW modeli</label>
+                                    <select id="selectedModel" 
+                                        class="w-full px-4 py-3.5 rounded-xl bg-black/90 border border-bmw-border text-white text-sm focus:outline-none focus:border-white transition-colors">
+                                        <option value="BMW M5 CS (2022)">BMW M5 CS (2022)</option>
+                                        <option value="BMW M4 CSL (2023)">BMW M4 CSL (2023)</option>
+                                        <option value="BMW i7 xDrive60 (2023)">BMW i7 xDrive60 (2023)</option>
+                                        <option value="BMW XM Label Red (2024)">BMW XM Label Red (2024)</option>
+                                        <option value="BMW M3 Touring (2024)">BMW M3 Touring (2024)</option>
+                                        <option value="BMW i5 M60 / Neue Klasse (2025-2026)">BMW i5 M60 / Neue Klasse (2025–2026)</option>
+                                        <option value="Klassik modellar">Boshqa / Klassik modellar</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <!-- Murojaat maqsadi -->
+                            <div>
+                                <label class="block text-xs font-medium uppercase tracking-wider text-bmw-silver mb-2.5">Murojaat turi</label>
+                                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                                    <label class="cursor-pointer">
+                                        <input type="radio" name="requestType" value="Test-drayv" class="peer sr-only" checked>
+                                        <div class="p-3 rounded-xl border border-bmw-border bg-black/50 text-center text-xs font-medium text-bmw-silver peer-checked:bg-white peer-checked:text-black peer-checked:border-white transition-all">
+                                            Test-drayvga yozilish
+                                        </div>
+                                    </label>
+                                    <label class="cursor-pointer">
+                                        <input type="radio" name="requestType" value="3D Dizayn va Buyurtma" class="peer sr-only">
+                                        <div class="p-3 rounded-xl border border-bmw-border bg-black/50 text-center text-xs font-medium text-bmw-silver peer-checked:bg-white peer-checked:text-black peer-checked:border-white transition-all">
+                                            3D Konfiguratsiya
+                                        </div>
+                                    </label>
+                                    <label class="cursor-pointer">
+                                        <input type="radio" name="requestType" value="Batafsil maslahat" class="peer sr-only">
+                                        <div class="p-3 rounded-xl border border-bmw-border bg-black/50 text-center text-xs font-medium text-bmw-silver peer-checked:bg-white peer-checked:text-black peer-checked:border-white transition-all">
+                                            Maslahat olish
+                                        </div>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- Qo'shimcha izoh -->
+                            <div>
+                                <label for="message" class="block text-xs font-medium uppercase tracking-wider text-bmw-silver mb-2">Qo'shimcha xabar</label>
+                                <textarea id="message" rows="3" placeholder="Savollaringiz yoki istaklaringizni yozib qoldiring..." 
+                                    class="w-full px-4 py-3 rounded-xl bg-black/70 border border-bmw-border text-white placeholder-bmw-muted/60 text-sm focus:outline-none focus:border-white transition-colors"></textarea>
+                            </div>
+
+                            <!-- Yuborish tugmasi -->
+                            <button type="submit" class="w-full py-4 rounded-2xl btn-silver font-bold text-sm uppercase tracking-widest flex items-center justify-center gap-3">
+                                <span>Ro'yxatdan o'tish va Yuborish</span>
+                                <i class="fa-solid fa-paper-plane text-xs"></i>
+                            </button>
+                        </form>
+
+                        <!-- Muvaffaqiyatli yuborilganda chiqadigan xabar (alert o'rniga) -->
+                        <div id="form-success-box" class="hidden text-center py-10 space-y-4">
+                            <div class="w-16 h-16 rounded-full bg-white text-black mx-auto flex items-center justify-center text-2xl shadow-[0_0_30px_rgba(255,255,255,0.4)]">
+                                <i class="fa-solid fa-check"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold text-white">So'rovingiz muvaffaqiyatli qabul qilindi!</h3>
+                            <p id="success-summary" class="text-sm text-bmw-silver max-w-md mx-auto leading-relaxed"></p>
+                            <button onclick="resetContactForm()" class="mt-4 px-6 py-2.5 rounded-xl btn-outline-silver text-xs uppercase tracking-wider font-semibold">
+                                Yangi so'rov yuborish
+                            </button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="bg-[#030303] border-t border-white/10 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
+            <div class="flex items-center gap-3">
+                <span class="text-lg font-bold tracking-[0.22em] text-white">BMW</span>
+                <span class="text-bmw-border">|</span>
+                <span class="text-xs text-bmw-muted">Tezlik va Qulaylik Zavqi • 2026</span>
+            </div>
+
+            <div class="flex flex-wrap justify-center gap-6 text-xs text-bmw-silver">
+                <a href="#bosh-sahifa" class="hover:text-white transition-colors">Bosh sahifa</a>
+                <a href="#yangi-modellar" class="hover:text-white transition-colors">Yangi Modellar</a>
+                <a href="#barcha-modellar" class="hover:text-white transition-colors">Barcha Modellar</a>
+                <a href="#bmw-tarixi" class="hover:text-white transition-colors">BMW Tarixi</a>
+                <a href="#aloqa" class="hover:text-white transition-colors">Aloqa</a>
+            </div>
+
+            <div class="flex items-center gap-4 text-bmw-silver">
+                <a href="#aloqa" aria-label="Instagram" class="w-9 h-9 rounded-full border border-bmw-border flex items-center justify-center hover:text-white hover:border-white transition-colors">
+                    <i class="fa-brands fa-instagram text-sm"></i>
+                </a>
+                <a href="#aloqa" aria-label="YouTube" class="w-9 h-9 rounded-full border border-bmw-border flex items-center justify-center hover:text-white hover:border-white transition-colors">
+                    <i class="fa-brands fa-youtube text-sm"></i>
+                </a>
+                <a href="#aloqa" aria-label="Telegram" class="w-9 h-9 rounded-full border border-bmw-border flex items-center justify-center hover:text-white hover:border-white transition-colors">
+                    <i class="fa-brands fa-telegram text-sm"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- ==================== 3D KO'RIK UCHUN INTERAKTIV MODAL OYNA ==================== -->
+    <div id="modal-3d" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/90 backdrop-blur-xl">
+        <div class="relative w-full max-w-4xl rounded-3xl bg-bmw-card border border-bmw-silver/30 shadow-[0_0_60px_rgba(0,0,0,0.9)] overflow-hidden">
+            
+            <!-- Modal Yuqori Paneli -->
+            <div class="flex items-center justify-between px-6 py-4 border-b border-white/10 bg-black/60">
+                <div class="flex items-center gap-3">
+                    <span id="modal-badge" class="px-3 py-1 rounded-full text-[11px] font-bold uppercase tracking-wider bg-white text-black">3D Tashqi Ko'rinish</span>
+                    <h3 id="modal-model-title" class="text-lg sm:text-xl font-bold text-white">BMW M5 CS</h3>
+                </div>
+                <button onclick="close3DModal()" aria-label="Yopish" class="w-9 h-9 rounded-full bg-white/5 hover:bg-white hover:text-black text-white flex items-center justify-center transition-colors">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <!-- 3D Dizayn Joylashtiriladigan Asosiy Sahna -->
+            <div class="relative h-[380px] sm:h-[460px] bg-gradient-to-b from-[#0d0d10] to-[#050505] flex flex-col items-center justify-center p-6 overflow-hidden">
+                
+                <!-- 3D Panjara pol effekti -->
+                <div class="absolute bottom-0 inset-x-0 h-44 grid-3d-floor opacity-40 pointer-events-none"></div>
+
+                <!-- 3D Model uchun konteyner (Keyinchalik 3D iframe / Three.js / model-viewer shu yerga ulanadi) -->
+                <div id="modal-3d-stage" class="relative z-10 w-full h-full rounded-2xl border border-dashed border-bmw-silver/35 bg-black/40 flex flex-col items-center justify-center text-center p-6">
+                    <div id="modal-icon-circle" class="w-20 h-20 rounded-full bg-white/5 border border-bmw-silver/40 flex items-center justify-center mb-4 shadow-[0_0_30px_rgba(192,192,192,0.15)]">
+                        <i id="modal-mode-icon" class="fa-solid fa-cube text-3xl text-white"></i>
+                    </div>
+                    <h4 id="modal-stage-heading" class="text-xl font-bold text-white mb-2">3D Tashqi Model Uchun Tayyor Sahna</h4>
+                    <p id="modal-stage-desc" class="text-sm text-bmw-silver max-w-md font-light">
+                        Siz yuboradigan 3D dizayn fayli (<span class="text-white">.glb / .gltf</span> yoki <span class="text-white">3D iframe</span>) aynan shu interaktiv oynaga ulanadi.
+                    </p>
+                    <div class="mt-5 flex items-center gap-2 text-xs text-bmw-muted bg-white/5 px-4 py-2 rounded-full border border-white/10">
+                        <i class="fa-solid fa-rotate text-bmw-silver"></i>
+                        <span>360° Aylantirish va Yaqinlashtirish rejimi faol</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal Pastki Boshqaruv Tugmalari (Tashqi va Salon orasida tezkor almashish) -->
+            <div class="px-6 py-4 bg-black/80 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div class="flex items-center gap-3 w-full sm:w-auto">
+                    <button id="switch-exterior-btn" onclick="switch3DMode('exterior')" class="flex-1 sm:flex-initial px-5 py-2.5 rounded-xl text-xs font-semibold uppercase tracking-wider transition-all">
+                        <i class="fa-solid fa-car mr-1.5"></i> Tashqaridan ko'rish
+                    </button>
+                    <button id="switch-interior-btn" onclick="switch3DMode('interior')" class="flex-1 sm:flex-initial px-5 py-2.5 rounded-xl text-xs font-semibold uppercase tracking-wider transition-all">
+                        <i class="fa-solid fa-chair mr-1.5"></i> Salon ichini ko'rish
+                    </button>
+                </div>
+                <a href="#aloqa" onclick="close3DModal()" class="w-full sm:w-auto text-center px-5 py-2.5 rounded-xl btn-outline-silver text-xs font-semibold uppercase tracking-wider">
+                    Ushbu modelga buyurtma berish
+                </a>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- ==================== JAVASCRIPT LOGIKA ==================== -->
+    <script>
+        // 1. YANGI MODELLAR MA'LUMOTLARI (2020–2026)
+        const newModels = [
+            {
+                id: 'm5-cs',
+                name: 'BMW M5 CS',
+                year: '2022',
+                category: 'Yuqori unumdor Sport Sedan',
+                speed: '305 km/soat • 0–100: 3.0 soniya',
+                specs: '4.4L V8 M TwinPower Turbo • 635 ot kuchi • M xDrive to‘liq uzatma',
+                advantages: 'Eng yengil va qudratli M5 modeli, karbon-keramika tormozlar hamda eksklyuziv 4 o‘rinli poyga o‘rindiqlari.',
+                imagePlaceholder: 'BMW M5 CS (2022) rasmi'
+            },
+            {
+                id: 'm4-csl',
+                name: 'BMW M4 CSL',
+                year: '2023',
+                category: 'Trek va Yo‘l Giper-Kupesi',
+                speed: '307 km/soat • 0–100: 3.7 soniya',
+                specs: '3.0L 6-silindrli TwinTurbo • 550 ot kuchi • Orqa g‘ildirakdan tortish',
+                advantages: '100 kg yengillashtirilgan karbon kuzov, Nyurburgring rekordchisi va cheklangan 1000 dona tiraj.',
+                imagePlaceholder: 'BMW M4 CSL (2023) rasmi'
+            },
+            {
+                id: 'i7-xdrive60',
+                name: 'BMW i7 xDrive60',
+                year: '2023',
+                category: 'Flagman Elektr Hashamatli Sedan',
+                speed: '240 km/soat • 0–100: 4.7 soniya',
+                specs: 'Ikki elektr motor • 544 ot kuchi • 625 km gacha yurish zaxirasi',
+                advantages: 'Orqa yo‘lovchilar uchun 31.3 dyuymli 8K Theatre Screen kinoteatri va mutlaq sukunatdagi komfort.',
+                imagePlaceholder: 'BMW i7 xDrive60 (2023) rasmi'
+            },
+            {
+                id: 'xm-label-red',
+                name: 'BMW XM Label Red',
+                year: '2024',
+                category: 'Gibrid Sport Krossover (SAV)',
+                speed: '290 km/soat • 0–100: 3.8 soniya',
+                specs: '4.4L V8 Plug-in Hybrid • 748 ot kuchi • 1000 Nm aylanish momenti',
+                advantages: 'BMW M tarixidagi eng kuchli seriyali avtomobil, futuristik dizayn va M Lounge hashamatli saloni.',
+                imagePlaceholder: 'BMW XM Label Red (2024) rasmi'
+            },
+            {
+                id: 'm3-touring',
+                name: 'BMW M3 Competition Touring',
+                year: '2024',
+                category: 'Sport Universal (Wagon)',
+                speed: '280 km/soat • 0–100: 3.6 soniya',
+                specs: '3.0L M TwinPower Turbo • 510 ot kuchi • M xDrive tizimi',
+                advantages: 'Superkar tezligi va oilaviy sayohatlar uchun keng yukxona sig‘imining mukammal uyg‘unligi.',
+                imagePlaceholder: 'BMW M3 Touring (2024) rasmi'
+            },
+            {
+                id: 'neue-klasse-2026',
+                name: 'BMW i5 M60 / Neue Klasse',
+                year: '2025–2026',
+                category: 'Kelajak Avlod Elektr Sport Sedani',
+                speed: '250 km/soat • 0–100: 3.8 soniya',
+                specs: '6-avlod eDrive texnologiyasi • 601 ot kuchi • Panoramic Vision displey',
+                advantages: 'Yangi avlod batareya samaradorligi, old oyna bo‘ylab kengaytirilgan raqamli interfeys va avtonom boshqaruv.',
+                imagePlaceholder: 'BMW 2025–2026 modeli rasmi'
+            }
+        ];
+
+        // 2. BARCHA MODELLAR (TARIXDAN HOZIRGACHA CAROUSEL)
+        const archiveModels = [
+            {
+                year: '1936–1940',
+                era: 'classic',
+                eraLabel: 'Klassik Afsona',
+                name: 'BMW 328 Roadster',
+                desc: 'O‘z davrining eng ilg‘or aerodinamikasi va 6-silindrli dvigateli bilan Mille Miglia poygalarida mutlaq g‘olib bo‘lgan afsona.'
+            },
+            {
+                year: '1956–1959',
+                era: 'classic',
+                eraLabel: 'Dizayn Durdonasi',
+                name: 'BMW 507 Roadster',
+                desc: 'Albrecht von Goertz tomonidan yaratilgan, avtomobilsozlik tarixidagi eng go‘zal rodsterlardan biri (V8 dvigatel).'
+            },
+            {
+                year: '1973–1975',
+                era: 'classic',
+                eraLabel: 'Turbo Inqilobi',
+                name: 'BMW 2002 Turbo',
+                desc: 'Yevropada ishlab chiqarilgan birinchi seriyali turbokompressorli avtomobil va zamonaviy 3-seriya ajdodi.'
+            },
+            {
+                year: '1978–1981',
+                era: 'classic',
+                eraLabel: 'Birinchi M-Superkar',
+                name: 'BMW M1 (E26)',
+                desc: 'Giorgetto Giugiaro dizayni va o‘rta joylashuvli dvigatelga ega yagona klassik BMW superkari.'
+            },
+            {
+                year: '1986–1991',
+                era: 'classic',
+                eraLabel: 'Poyga Qiroli',
+                name: 'BMW M3 (E30)',
+                desc: 'DTM va jahon turizm chempionatlarida eng ko‘p g‘alaba qozongan afsonaviy sport kupesi.'
+            },
+            {
+                year: '1998–2003',
+                era: 'modern-classic',
+                eraLabel: 'Oltin Standart',
+                name: 'BMW M5 (E39)',
+                desc: '4.9 litrli atmosfera V8 dvigateli va mexanik uzatmalar qutisi bilan biznes-sport sedanlar etaloni.'
+            },
+            {
+                year: '2014–2020',
+                era: 'modern-classic',
+                eraLabel: 'Gibrid Kelajak',
+                name: 'BMW i8 Coupe',
+                desc: 'Kapalak qanotli eshiklar, karbon karkas va gibrid texnologiyani birlashtirgan futuristik sportkar.'
+            },
+            {
+                year: '2020–2026',
+                era: 'contemporary',
+                eraLabel: 'Zamonaviy Cho‘qqi',
+                name: 'BMW M5 CS & Neue Klasse',
+                desc: 'Eng yuqori ot kuchi, raqamli salon va yangi avlod elektr-sport texnologiyalarining uyg‘unligi.'
+            }
+        ];
+
+        // Yangi modellarni sahifaga chizish
+        function renderNewModels() {
+            const container = document.getElementById('new-models-grid');
+            container.innerHTML = newModels.map(model => `
+                <article class="bmw-card rounded-3xl overflow-hidden flex flex-col justify-between reveal">
+                    <div>
+                        <!-- Rasm joylashtirish uchun maxsus bo'sh konteyner -->
+                        <div class="relative h-56 m-3 rounded-2xl image-slot flex flex-col items-center justify-center p-4 text-center">
+                            <img 
+                                src="" 
+                                alt="${model.name}" 
+                                class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-500"
+                                onload="this.classList.remove('opacity-0'); this.nextElementSibling.classList.add('hidden');"
+                            >
+                            <div class="flex flex-col items-center">
+                                <div class="w-11 h-11 rounded-xl bg-white/5 border border-bmw-silver/25 flex items-center justify-center mb-2.5">
+                                    <i class="fa-regular fa-image text-bmw-silver"></i>
+                                </div>
+                                <span class="text-xs font-medium text-white">${model.imagePlaceholder}</span>
+                                <span class="text-[11px] text-bmw-muted mt-0.5">Rasm joylashtirish uchun bo'sh</span>
+                            </div>
+                            <!-- Yil nishoni -->
+                            <span class="absolute top-3 right-3 px-3 py-1 rounded-full bg-black/80 backdrop-blur-md border border-white/15 text-[11px] font-semibold text-white">
+                                ${model.year}
+                            </span>
+                        </div>
+
+                        <!-- Model ma'lumotlari -->
+                        <div class="p-6 pt-3">
+                            <span class="text-[11px] uppercase tracking-[0.2em] text-bmw-silver font-medium block mb-1">${model.category}</span>
+                            <h3 class="text-2xl font-bold text-white mb-4">${model.name}</h3>
+
+                            <div class="space-y-3 text-xs sm:text-sm border-t border-white/10 pt-4">
+                                <div class="flex items-start gap-2.5">
+                                    <i class="fa-solid fa-gauge-high text-white mt-1 w-4"></i>
+                                    <div>
+                                        <span class="text-bmw-muted block text-[11px] uppercase">Tezligi</span>
+                                        <span class="text-white font-medium">${model.speed}</span>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-start gap-2.5">
+                                    <i class="fa-solid fa-microchip text-bmw-silver mt-1 w-4"></i>
+                                    <div>
+                                        <span class="text-bmw-muted block text-[11px] uppercase">Hususiyatlari</span>
+                                        <span class="text-bmw-platinum font-light">${model.specs}</span>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-start gap-2.5">
+                                    <i class="fa-solid fa-star text-bmw-silver mt-1 w-4"></i>
+                                    <div>
+                                        <span class="text-bmw-muted block text-[11px] uppercase">Ustunliklari</span>
+                                        <span class="text-bmw-silver/90 font-light">${model.advantages}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 2 ta 3D Ko'rish Tugmasi -->
+                    <div class="p-6 pt-0 grid grid-cols-2 gap-3">
+                        <button onclick="open3DModal('${model.name}', 'exterior')" 
+                            class="py-3 px-3 rounded-xl btn-silver text-xs font-bold flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-car-side"></i>
+                            <span>Tashqaridan (3D)</span>
+                        </button>
+                        <button onclick="open3DModal('${model.name}', 'interior')" 
+                            class="py-3 px-3 rounded-xl btn-outline-silver text-xs font-semibold flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-dharmachakra"></i>
+                            <span>Salon ichi (3D)</span>
+                        </button>
+                    </div>
+                </article>
+            `).join('');
+        }
+
+        // Barcha modellar carouselini chizish
+        function renderArchiveModels(filter = 'all') {
+            const carousel = document.getElementById('archive-carousel');
+            const filtered = filter === 'all' 
+                ? archiveModels 
+                : archiveModels.filter(item => item.era === filter);
+
+            carousel.innerHTML = filtered.map(item => `
+                <div class="min-w-[290px] sm:min-w-[340px] max-w-[340px] snap-start bmw-card rounded-3xl p-5 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="px-3 py-1 rounded-full bg-white/10 text-white text-xs font-bold tracking-wider">${item.year}</span>
+                            <span class="text-[11px] uppercase tracking-widest text-bmw-silver">${item.eraLabel}</span>
+                        </div>
+
+                        <!-- Tarixiy model rasm joyi -->
+                        <div class="relative h-44 rounded-2xl image-slot flex flex-col items-center justify-center p-4 text-center mb-4">
+                            <img 
+                                src="" 
+                                alt="${item.name}" 
+                                class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-500"
+                                onload="this.classList.remove('opacity-0'); this.nextElementSibling.classList.add('hidden');"
+                            >
+                            <div>
+                                <i class="fa-regular fa-image text-bmw-silver text-lg mb-1.5"></i>
+                                <p class="text-xs font-medium text-white">${item.name}</p>
+                                <p class="text-[10px] text-bmw-muted">Arxiv rasmi uchun joy</p>
+                            </div>
+                        </div>
+
+                        <h3 class="text-xl font-bold text-white mb-2">${item.name}</h3>
+                        <p class="text-xs sm:text-sm text-bmw-silver/85 font-light leading-relaxed">${item.desc}</p>
+                    </div>
+
+                    <div class="pt-4 mt-4 border-t border-white/10 flex items-center justify-between text-xs text-bmw-muted">
+                        <span>BMW Merosi</span>
+                        <span class="text-white font-medium">Myunxen • Germaniya</span>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Davr bo'yicha filtrlash
+        function filterArchive(era) {
+            document.querySelectorAll('.archive-filter-btn').forEach(btn => {
+                if (btn.dataset.filter === era) {
+                    btn.classList.add('bg-white', 'text-black', 'font-semibold');
+                    btn.classList.remove('text-bmw-silver', 'font-medium');
+                } else {
+                    btn.classList.remove('bg-white', 'text-black', 'font-semibold');
+                    btn.classList.add('text-bmw-silver', 'font-medium');
+                }
+            });
+            renderArchiveModels(era);
+        }
+
+        // Carousel chap va o'ng tugmalari
+        document.getElementById('carousel-prev').addEventListener('click', () => {
+            document.getElementById('archive-carousel').scrollBy({ left: -360, behavior: 'smooth' });
+        });
+        document.getElementById('carousel-next').addEventListener('click', () => {
+            document.getElementById('archive-carousel').scrollBy({ left: 360, behavior: 'smooth' });
+        });
+
+        // 3D MODAL BOSHQARUVI
+        let currentModalModel = '';
+
+        function open3DModal(modelName, mode) {
+            currentModalModel = modelName;
+            document.getElementById('modal-model-title').textContent = modelName;
+            switch3DMode(mode);
+            
+            const modal = document.getElementById('modal-3d');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function switch3DMode(mode) {
+            const badge = document.getElementById('modal-badge');
+            const heading = document.getElementById('modal-stage-heading');
+            const desc = document.getElementById('modal-stage-desc');
+            const icon = document.getElementById('modal-mode-icon');
+            const extBtn = document.getElementById('switch-exterior-btn');
+            const intBtn = document.getElementById('switch-interior-btn');
+
+            if (mode === 'exterior') {
+                badge.textContent = '3D Tashqi Ko‘rinish (Eksteryer)';
+                heading.textContent = `${currentModalModel} — Tashqi 3D Dizayn Maydoni`;
+                desc.innerHTML = `Avtomobilning kuzov chiziqlari, disklari va yoritish tizimini 360° burchakda ko‘rish uchun yuboriladigan 3D model shu yerga joylashtiriladi.`;
+                icon.className = 'fa-solid fa-car-side text-3xl text-white';
+                
+                extBtn.className = 'flex-1 sm:flex-initial px-5 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider btn-silver';
+                intBtn.className = 'flex-1 sm:flex-initial px-5 py-2.5 rounded-xl text-xs font-semibold uppercase tracking-wider btn-outline-silver';
+            } else {
+                badge.textContent = '3D Salon Ichki Ko‘rinishi (Interyer)';
+                heading.textContent = `${currentModalModel} — Salon Ichi 360° VR Maydoni`;
+                desc.innerHTML = `Rul chambarak, BMW Curved Display ekrani va hashamatli o‘rindiqlarni ichkaridan tomosha qilish uchun 3D interyer dizayni shu yerga ulanadi.`;
+                icon.className = 'fa-solid fa-dharmachakra text-3xl text-white';
+
+                intBtn.className = 'flex-1 sm:flex-initial px-5 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider btn-silver';
+                extBtn.className = 'flex-1 sm:flex-initial px-5 py-2.5 rounded-xl text-xs font-semibold uppercase tracking-wider btn-outline-silver';
+            }
+        }
+
+        function close3DModal() {
+            const modal = document.getElementById('modal-3d');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+            document.body.style.overflow = '';
+        }
+
+        // Modal tashqarisini bosganda yopish
+        document.getElementById('modal-3d').addEventListener('click', (e) => {
+            if (e.target.id === 'modal-3d') close3DModal();
+        });
+
+        // Mobil menyu boshqaruvi
+        const mobileBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        document.querySelectorAll('.mobile-nav-link').forEach(link => {
+            link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+        });
+
+        // Aloqa formasi yuborilishi
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('fullName').value;
+            const model = document.getElementById('selectedModel').value;
+            const reqType = document.querySelector('input[name="requestType"]:checked').value;
+
+            document.getElementById('success-summary').innerHTML = 
+                `Hurmatli <strong class="text-white">${name}</strong>, sizning <strong class="text-white">${model}</strong> modeli bo‘yicha <span class="text-white underline">${reqType}</span> so‘rovingiz qabul qilindi. Tez orada siz bilan bog‘lanamiz.`;
+
+            this.classList.add('hidden');
+            document.getElementById('form-success-box').classList.remove('hidden');
+        });
+
+        function resetContactForm() {
+            document.getElementById('contact-form').reset();
+            document.getElementById('contact-form').classList.remove('hidden');
+            document.getElementById('form-success-box').classList.add('hidden');
+        }
+
+        // Scroll Reveal (AOS effekti)
+        function initScrollReveal() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+        }
+
+        // Sahifa yuklanganda ishga tushirish
+        document.addEventListener('DOMContentLoaded', () => {
+            renderNewModels();
+            renderArchiveModels('all');
+            initScrollReveal();
+        });
+    </script>
+</body>
+</html>
